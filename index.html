@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宅建 民法：相続・遺言・遺留分（50分）</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+
+  <style>
+    :root{
+      --accent:#2aa876;
+      --accent2:#e85d75;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --bg-soft:#f6f7fb;
+      --card:#ffffff;
+      --line:#e5e7eb;
+    }
+    .reveal { color: var(--ink); }
+    .reveal h2{ font-size: 36px; letter-spacing:.02em; margin-bottom: 6px; }
+    .reveal h3{ font-size: 30px; letter-spacing:.02em; }
+    .reveal p, .reveal li { font-size: 24px; line-height: 1.3; }
+    .small { font-size: 20px; color: var(--muted); }
+    .k { font-weight: 800; color: var(--accent); }
+    .k2 { font-weight: 800; color: var(--accent2); }
+    /* 用語ノート：用語に付ける小さな注釈 */
+    .term-note{
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      padding: 1px 6px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      margin-left: 3px;
+      vertical-align: middle;
+      white-space: nowrap;
+      display: inline-block;
+      line-height: 1.4;
+    }
+    /* らくらく宅建塾ページ番号（右下） */
+    .page-ref{
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      font-size: 12px;
+      color: #9ca3af;
+      background: rgba(246,247,251,0.92);
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-weight: 400;
+      border: 1px solid var(--line);
+    }
+    .box{
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin: 6px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,.04);
+    }
+    .callout{
+      background: #fff7fb;
+      border: 2px solid #ffd0dd;
+      border-radius: 14px;
+      padding: 9px 13px;
+      margin: 6px 0;
+    }
+    .callout-g{
+      background: #f0fdf6;
+      border: 2px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 9px 13px;
+      margin: 6px 0;
+    }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items:start; }
+    .grid3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items:start; }
+    .tag{
+      display:inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border:1px solid var(--line);
+      font-size: 18px;
+      margin-right: 8px;
+    }
+    .note{
+      border-left:5px solid var(--accent);
+      padding-left:12px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-top: 8px;
+    }
+    .note2{
+      border-left:5px solid var(--accent2);
+      padding-left:12px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-top: 8px;
+    }
+    .svg-wrap{ background:#fff; border:2px solid var(--line); border-radius:14px; padding:8px; }
+    .center{ text-align:center; }
+    .w100{ width:100%; }
+    /* Toggle Answer UI */
+    .btn{
+      display:inline-block;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 2px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      font-size: 20px;
+      user-select:none;
+    }
+    .btn:hover{ border-color:#cbd5e1; }
+    .answer{
+      display:none;
+      margin-top: 8px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 2px solid #c7f1df;
+      background: #f3fffa;
+    }
+    .answer .ttl{ font-weight:900; color: var(--accent); font-size: 22px; }
+    .tbl{
+      width:100%; border-collapse:collapse; font-size:21px;
+    }
+    .tbl th{
+      background:#f6f7fb; border:2px solid var(--line);
+      padding:8px 12px; text-align:center;
+    }
+    .tbl td{
+      border:2px solid var(--line);
+      padding:8px 12px; text-align:center;
+    }
+    .win{ color:#2aa876; font-weight:800; }
+    .lose{ color:#e85d75; font-weight:800; }
+    .badge{
+      display:inline-block;
+      padding:3px 10px;
+      border-radius:999px;
+      font-size:18px;
+      font-weight:700;
+    }
+    .badge-g{ background:#dcfce7; color:#15803d; }
+    .badge-p{ background:#fce7f3; color:#9d174d; }
+    .badge-y{ background:#fef9c3; color:#92400e; }
+    /* 順位カード */
+    .rank-card{
+      border-radius:14px;
+      padding:12px 10px;
+      text-align:center;
+      font-size:22px;
+      font-weight:700;
+    }
+    .rank1{ background:#f0fdf6; border:2px solid #2aa876; }
+    .rank2{ background:#fff7fb; border:2px solid #e85d75; }
+    .rank3{ background:#fffbeb; border:2px solid #f59e0b; }
+    .rank-always{ background:#f6f7fb; border:2px solid #6b7280; }
+    /* 本試験形式の択一リスト */
+    .exam-q{
+      font-size:22px;
+      background:#f6f7fb;
+      border:2px solid var(--line);
+      border-radius:12px;
+      padding:10px 14px;
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+    .exam-q p{ font-size:22px; line-height:1.5; margin:4px 0; }
+    .exam-choice{
+      margin: 5px 0;
+      font-size:21px;
+      line-height: 1.5;
+    }
+    /* Reveal.js スライドのオーバーフロー対策 */
+    .reveal .slides section {
+      overflow-y: auto;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===================================================
+     SVG シンボルライブラリ（非表示領域）
+=================================================== -->
+<svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#6b7280"></polygon>
+    </marker>
+    <marker id="ah-g" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2aa876"></polygon>
+    </marker>
+    <marker id="ah-p" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e85d75"></polygon>
+    </marker>
+    <style>
+      .d-t{ fill:#1f2937; font-family: ui-sans-serif, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial; }
+      .d-s{ fill:#6b7280; font-family: ui-sans-serif, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial; }
+      .d-ac{ fill:#2aa876; font-weight:800; }
+      .d-ac2{ fill:#e85d75; font-weight:800; }
+    </style>
+  </defs>
+
+  <!-- 1) 相続人の順位図 -->
+  <symbol id="diag-souzoku-juni" viewBox="0 0 900 300">
+    <rect x="350" y="10" width="200" height="70" rx="14" fill="#f6f7fb" stroke="#6b7280" stroke-width="3"/>
+    <text x="450" y="52" text-anchor="middle" font-size="26" class="d-t">配偶者</text>
+    <text x="450" y="74" text-anchor="middle" font-size="18" class="d-s">常に相続人</text>
+    <rect x="30" y="120" width="200" height="70" rx="14" fill="#f0fdf6" stroke="#2aa876" stroke-width="3"/>
+    <text x="130" y="158" text-anchor="middle" font-size="24" class="d-ac">①子（直系卑属）</text>
+    <text x="130" y="180" text-anchor="middle" font-size="17" class="d-s">第1順位</text>
+    <rect x="350" y="120" width="200" height="70" rx="14" fill="#fff7fb" stroke="#e85d75" stroke-width="3"/>
+    <text x="450" y="158" text-anchor="middle" font-size="24" class="d-ac2">②父母（直系尊属）</text>
+    <text x="450" y="180" text-anchor="middle" font-size="17" class="d-s">第2順位（子がいない時）</text>
+    <rect x="670" y="120" width="200" height="70" rx="14" fill="#fffbeb" stroke="#f59e0b" stroke-width="3"/>
+    <text x="770" y="158" text-anchor="middle" font-size="24" fill="#92400e" font-weight="800">③兄弟姉妹</text>
+    <text x="770" y="180" text-anchor="middle" font-size="17" class="d-s">第3順位（父母もない時）</text>
+    <line x1="380" y1="80" x2="200" y2="120" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ah)"/>
+    <line x1="450" y1="80" x2="450" y2="120" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ah)"/>
+    <line x1="520" y1="80" x2="700" y2="120" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ah)"/>
+    <text x="450" y="270" text-anchor="middle" font-size="22" class="d-t">配偶者は <tspan class="d-ac">常に</tspan>、血族相続人は <tspan class="d-ac2">上位順位</tspan> のみ</text>
+  </symbol>
+
+  <!-- 2) 代襲相続フロー -->
+  <symbol id="diag-daishuu" viewBox="0 0 900 280">
+    <rect x="350" y="20" width="200" height="70" rx="14" fill="#f6f7fb" stroke="#6b7280" stroke-width="3"/>
+    <text x="450" y="63" text-anchor="middle" font-size="28" class="d-t">被相続人</text>
+    <rect x="120" y="130" width="200" height="70" rx="14" fill="#fce7f3" stroke="#e85d75" stroke-width="3"/>
+    <text x="220" y="165" text-anchor="middle" font-size="24" class="d-ac2">子（死亡）</text>
+    <text x="220" y="187" text-anchor="middle" font-size="18" class="d-s">または 廃除・欠格</text>
+    <rect x="30" y="240" width="160" height="55" rx="14" fill="#f0fdf6" stroke="#2aa876" stroke-width="3"/>
+    <text x="110" y="274" text-anchor="middle" font-size="22" class="d-ac">孫が代襲！</text>
+    <rect x="580" y="130" width="200" height="70" rx="14" fill="#f6f7fb" stroke="#9ca3af" stroke-width="3"/>
+    <text x="680" y="165" text-anchor="middle" font-size="24" class="d-t">子（放棄）</text>
+    <rect x="580" y="240" width="200" height="55" rx="14" fill="#fce7f3" stroke="#e85d75" stroke-width="2" stroke-dasharray="5,4"/>
+    <text x="680" y="274" text-anchor="middle" font-size="22" class="d-ac2">代襲なし！</text>
+    <line x1="390" y1="90" x2="280" y2="130" stroke="#6b7280" stroke-width="3" marker-end="url(#ah)"/>
+    <line x1="510" y1="90" x2="630" y2="130" stroke="#6b7280" stroke-width="3" marker-end="url(#ah)"/>
+    <line x1="170" y1="200" x2="120" y2="240" stroke="#2aa876" stroke-width="3" marker-end="url(#ah-g)"/>
+    <line x1="680" y1="200" x2="680" y2="240" stroke="#e85d75" stroke-width="3" stroke-dasharray="5,4" marker-end="url(#ah-p)"/>
+    <text x="220" y="228" text-anchor="middle" font-size="16" class="d-s">死亡・廃除・欠格</text>
+    <text x="680" y="228" text-anchor="middle" font-size="16" class="d-s">放棄は代襲されない</text>
+  </symbol>
+
+  <!-- 3) 相続の承認・放棄フロー -->
+  <symbol id="diag-shounin-houki" viewBox="0 0 900 280">
+    <rect x="330" y="15" width="240" height="65" rx="14" fill="#f6f7fb" stroke="#6b7280" stroke-width="3"/>
+    <text x="450" y="57" text-anchor="middle" font-size="26" class="d-t">相続開始 ＋ 3ヶ月以内</text>
+    <rect x="20" y="130" width="230" height="90" rx="14" fill="#f0fdf6" stroke="#2aa876" stroke-width="3"/>
+    <text x="135" y="172" text-anchor="middle" font-size="24" class="d-ac">単純承認</text>
+    <text x="135" y="200" text-anchor="middle" font-size="18" class="d-s">全て（＋も－も）承継</text>
+    <rect x="335" y="130" width="230" height="90" rx="14" fill="#fffbeb" stroke="#f59e0b" stroke-width="3"/>
+    <text x="450" y="172" text-anchor="middle" font-size="24" fill="#92400e" font-weight="800">限定承認</text>
+    <text x="450" y="200" text-anchor="middle" font-size="18" class="d-s">＋の範囲内で－を引受</text>
+    <rect x="650" y="130" width="230" height="90" rx="14" fill="#fff7fb" stroke="#e85d75" stroke-width="3"/>
+    <text x="765" y="172" text-anchor="middle" font-size="24" class="d-ac2">放棄</text>
+    <text x="765" y="200" text-anchor="middle" font-size="18" class="d-s">全て引き受けない</text>
+    <line x1="390" y1="80" x2="200" y2="130" stroke="#6b7280" stroke-width="3" marker-end="url(#ah)"/>
+    <line x1="450" y1="80" x2="450" y2="130" stroke="#6b7280" stroke-width="3" marker-end="url(#ah)"/>
+    <line x1="510" y1="80" x2="720" y2="130" stroke="#6b7280" stroke-width="3" marker-end="url(#ah)"/>
+    <rect x="20" y="240" width="860" height="40" rx="10" fill="#fce7f3" stroke="#e85d75" stroke-width="1"/>
+    <text x="450" y="266" text-anchor="middle" font-size="20" class="d-t">限定承認 → <tspan class="d-ac2">相続人全員で申述</tspan>　　放棄 → <tspan class="d-ac">各自単独でOK</tspan></text>
+  </symbol>
+
+  <!-- 4) 遺言の比較表 -->
+  <symbol id="diag-yuigon-hikaku" viewBox="0 0 900 260">
+    <rect x="20" y="20" width="860" height="50" rx="8" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="2"/>
+    <text x="150" y="53" text-anchor="middle" font-size="22" class="d-t" font-weight="700">種類</text>
+    <text x="380" y="53" text-anchor="middle" font-size="22" class="d-t" font-weight="700">証人</text>
+    <text x="570" y="53" text-anchor="middle" font-size="22" class="d-t" font-weight="700">検認</text>
+    <text x="770" y="53" text-anchor="middle" font-size="22" class="d-t" font-weight="700">特徴</text>
+    <rect x="20" y="80" width="860" height="65" rx="4" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+    <text x="150" y="118" text-anchor="middle" font-size="22" class="d-t">自筆証書遺言</text>
+    <text x="380" y="118" text-anchor="middle" font-size="22" class="d-ac">不要</text>
+    <text x="570" y="114" text-anchor="middle" font-size="22" class="d-ac2">必要</text>
+    <text x="570" y="136" text-anchor="middle" font-size="16" class="d-s">（保管所なら不要）</text>
+    <text x="770" y="118" text-anchor="middle" font-size="20" class="d-s">自分で全文・日付・氏名を手書き</text>
+    <rect x="20" y="155" width="860" height="65" rx="4" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+    <text x="150" y="193" text-anchor="middle" font-size="22" class="d-t">公正証書遺言</text>
+    <text x="380" y="190" text-anchor="middle" font-size="22" class="d-ac2">2人以上必要</text>
+    <text x="380" y="212" text-anchor="middle" font-size="16" class="d-s">（近親者はダメ）</text>
+    <text x="570" y="193" text-anchor="middle" font-size="22" class="d-ac">不要</text>
+    <text x="770" y="193" text-anchor="middle" font-size="20" class="d-s">公証役場で作成・保管</text>
+    <rect x="20" y="225" width="860" height="35" rx="8" fill="#f0fdf6" stroke="#2aa876" stroke-width="2"/>
+    <text x="450" y="248" text-anchor="middle" font-size="20" class="d-t">共通：効力は同じ（優劣なし）、<tspan class="d-ac">後の遺言が勝ち！</tspan>、いつでも撤回自由</text>
+  </symbol>
+
+  <!-- 5) 遺留分の割合 -->
+  <symbol id="diag-iryubun" viewBox="0 0 900 260">
+    <rect x="30" y="30" width="240" height="100" rx="14" fill="#fce7f3" stroke="#e85d75" stroke-width="3"/>
+    <text x="150" y="78" text-anchor="middle" font-size="26" class="d-t">兄弟姉妹のみ</text>
+    <text x="150" y="112" text-anchor="middle" font-size="32" class="d-ac2">遺留分なし</text>
+    <rect x="330" y="30" width="240" height="100" rx="14" fill="#fffbeb" stroke="#f59e0b" stroke-width="3"/>
+    <text x="450" y="78" text-anchor="middle" font-size="26" class="d-t">直系尊属のみ</text>
+    <text x="450" y="112" text-anchor="middle" font-size="32" fill="#92400e" font-weight="800">遺産の 1/3</text>
+    <rect x="630" y="30" width="240" height="100" rx="14" fill="#f0fdf6" stroke="#2aa876" stroke-width="3"/>
+    <text x="750" y="78" text-anchor="middle" font-size="26" class="d-t">それ以外</text>
+    <text x="750" y="112" text-anchor="middle" font-size="32" class="d-ac">遺産の 1/2</text>
+    <rect x="30" y="160" width="840" height="90" rx="14" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="2"/>
+    <text x="450" y="196" text-anchor="middle" font-size="22" class="d-t">遺留分侵害額請求権の行使</text>
+    <text x="200" y="232" text-anchor="middle" font-size="20" class="d-ac">単独</text>
+    <text x="200" y="232" text-anchor="middle" font-size="20" class="d-ac">      で行使できる</text>
+    <text x="450" y="232" text-anchor="middle" font-size="20" class="d-t">　　各自 <tspan class="d-ac">譲渡</tspan> できる</text>
+    <text x="720" y="232" text-anchor="middle" font-size="20" class="d-t">訴え不要 <tspan class="d-ac">意思表示</tspan> だけでOK</text>
+  </symbol>
+
+</svg>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ===== タイトル ===== -->
+<section data-background-color="#1f2937">
+  <div style="color:#fff; text-align:center; padding-top:50px;">
+    <p style="font-size:20px; color:#9ca3af; letter-spacing:.1em; margin-bottom:14px;">株式会社 NEW ERA ／ 宅建試験勉強会 第7回</p>
+    <h2 style="font-size:52px; color:#fff; margin:0 0 14px;">民法：相続・遺言・遺留分</h2>
+    <p style="font-size:26px; color:#6ee7b7; margin:0 0 32px;">らくらく宅建塾 第4章（p69〜p86）</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; max-width:780px; margin:0 auto;">
+      <div style="background:rgba(255,255,255,.12); border-radius:14px; padding:14px;">
+        <div style="font-size:20px; color:#9ca3af;">第1部（25分）</div>
+        <div style="font-size:22px; color:#fff; margin-top:4px;">相続人と相続分</div>
+      </div>
+      <div style="background:rgba(255,255,255,.12); border-radius:14px; padding:14px;">
+        <div style="font-size:20px; color:#9ca3af;">第2部（18分）</div>
+        <div style="font-size:22px; color:#fff; margin-top:4px;">遺言・遺留分</div>
+      </div>
+      <div style="background:rgba(255,255,255,.12); border-radius:14px; padding:14px;">
+        <div style="font-size:20px; color:#9ca3af;">最後（7分）</div>
+        <div style="font-size:22px; color:#fff; margin-top:4px;">確認クイズ</div>
+      </div>
+    </div>
+    <p style="font-size:18px; color:#6b7280; margin-top:28px;">2026年3月9日（月）9:00〜9:50</p>
+  </div>
+</section>
+
+<!-- ===== 今日のゴール ===== -->
+<section>
+  <h2>今日のゴール ✅</h2>
+  <div class="box" style="margin-top:14px;">
+    <p>① 相続人の<span class="k">順位</span>と<span class="k">法定相続分</span><span class="term-note">法律で決まった相続の割合</span>を計算できる</p>
+  </div>
+  <div class="box">
+    <p>② <span class="k2">代襲相続</span><span class="term-note">相続人の代わりにその子が相続すること</span>が起きるケース・起きないケースを区別できる</p>
+  </div>
+  <div class="box">
+    <p>③ 遺言の<span class="k">自筆証書</span>と<span class="k">公正証書</span>の違い、<span class="k2">遺留分</span><span class="term-note">法定相続人に保障された最低限の相続分</span>の割合と請求の仕組みを言える</p>
+  </div>
+  <p class="note" style="margin-top:12px;">過去問での頻出度：相続人の確定・法定相続分 ★★★　遺留分 ★★★　代襲相続 ★★</p>
+</section>
+
+<!-- ===== 前回の振り返り ===== -->
+<section>
+  <h2>前回の復習：一問一答</h2>
+  <p style="font-size:20px; color:var(--muted); margin-top:2px;">声に出して答えてみよう！</p>
+  <div class="box" style="margin-top:12px;">
+    <p style="font-weight:700;">Q1. 代理が有効になる3要件は？</p>
+  </div>
+  <span class="btn" onclick="this.nextElementSibling.style.display='block'">▶ 答えを見る</span>
+  <div class="answer">
+    <div class="ttl">① 代理権　② 顕名（名乗る）　③ 本人のために行動</div>
+    <p>→ 3つそろうと効果は <span class="k">本人へ帰属</span></p>
+  </div>
+  <div class="box" style="margin-top:12px;">
+    <p style="font-weight:700;">Q2. 消滅時効の期間は？（2パターン）</p>
+  </div>
+  <span class="btn" onclick="this.nextElementSibling.style.display='block'">▶ 答えを見る</span>
+  <div class="answer">
+    <div class="ttl">主観（知ったとき）から5年 ／ 客観（権利行使できるとき）から10年</div>
+    <p>→ どちらか <span class="k">先に到来した方</span> で時効完成</p>
+  </div>
+</section>
+
+<!-- ===== 第1部 ヘッダー ===== -->
+<section data-background-color="#f0fdf6">
+  <div style="text-align:center; padding:60px 0;">
+    <p style="font-size:22px; color:var(--muted);">第 1 部 ／ 25分</p>
+    <h2 style="font-size:50px; color:var(--accent); margin:10px 0;">相続人と相続分</h2>
+    <p style="font-size:24px; color:var(--ink);">誰が・いくら相続するか</p>
+  </div>
+</section>
+
+<!-- ===== 相続人の順位 ===== -->
+<section>
+  <h2>相続人の順位</h2>
+  <div class="svg-wrap w100" style="margin-top:8px;">
+    <svg viewBox="0 0 900 300" style="width:100%;height:auto;">
+      <use href="#diag-souzoku-juni"/>
+    </svg>
+  </div>
+  <div class="grid3" style="margin-top:10px;">
+    <div class="rank-card rank1">
+      <span class="k">第1順位</span><br>
+      <span style="font-size:17px; font-weight:400;">子（直系卑属<span class="term-note">血族の下の世代：子・孫</span>）</span>
+    </div>
+    <div class="rank-card rank2">
+      <span class="k2">第2順位</span><br>
+      <span style="font-size:17px; font-weight:400;">父母（直系尊属<span class="term-note">血族の上の世代：父母・祖父母</span>）</span>
+    </div>
+    <div class="rank-card rank3">
+      <span style="color:#92400e; font-weight:800;">第3順位</span><br>
+      <span style="font-size:17px; font-weight:400;">兄弟姉妹</span>
+    </div>
+  </div>
+  <p class="note" style="margin-top:8px;">配偶者は <span class="k">常に</span> 相続人。上位順位がいれば下位は相続しない。</p>
+  <div class="page-ref">らくらく宅建塾 p.70〜71</div>
+</section>
+
+<!-- ===== 法定相続分：2ステップ計算法 ===== -->
+<section>
+  <h2>法定相続分の計算：2ステップで必ず解ける</h2>
+  <div style="display:grid; grid-template-columns:1fr 50px 1fr; gap:8px; align-items:center; margin-top:14px;">
+    <div class="box" style="text-align:center; background:#f0fdf6; border-color:#2aa876;">
+      <p style="font-size:20px; color:var(--muted); margin:0 0 4px;">STEP 1</p>
+      <p style="font-size:26px; font-weight:800; color:var(--accent);">配偶者の取り分を確定</p>
+      <p style="font-size:20px; margin-top:6px;">誰と一緒に相続するか<br>によって変わる</p>
+    </div>
+    <div style="text-align:center; font-size:32px; color:var(--muted);">→</div>
+    <div class="box" style="text-align:center; background:#fff7fb; border-color:#e85d75;">
+      <p style="font-size:20px; color:var(--muted); margin:0 0 4px;">STEP 2</p>
+      <p style="font-size:26px; font-weight:800; color:var(--accent2);">血族の残りを均等割り</p>
+      <p style="font-size:20px; margin-top:6px;">子が3人なら<br>残りを÷3する</p>
+    </div>
+  </div>
+  <table class="tbl" style="margin-top:14px;">
+    <thead>
+      <tr><th>組み合わせ</th><th>配偶者</th><th>血族相続人</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>配偶者 ＋ <span class="k">子（第1順位）</span></td>
+        <td class="win" style="font-size:24px;">½</td>
+        <td>残り½を子の人数で÷</td>
+      </tr>
+      <tr>
+        <td>配偶者 ＋ <span class="k2">父母（第2順位）</span></td>
+        <td class="win" style="font-size:24px;">⅔</td>
+        <td>残り⅓を父母の人数で÷</td>
+      </tr>
+      <tr>
+        <td>配偶者 ＋ <span style="color:#92400e; font-weight:800;">兄弟姉妹（第3順位）</span></td>
+        <td class="win" style="font-size:24px;">¾</td>
+        <td>残り¼を兄弟の人数で÷</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:8px;">
+    <p style="font-size:20px;"><span class="k2">覚え方：</span> 子と組んだら半分（½）、親と組んだら多め（⅔）、兄弟と組んだらもっと多め（¾）</p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.72〜73</div>
+</section>
+
+<!-- ===== 法定相続分：計算練習 ===== -->
+<section>
+  <h2>法定相続分：計算してみよう</h2>
+  <div class="callout-g" style="margin-top:10px;">
+    <p><span class="k">例）</span>遺産6,000万円。相続人：配偶者B・子C・子D・子E（3人）</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 36px 1fr; gap:10px; align-items:start; margin-top:14px;">
+    <div class="box" style="background:#f0fdf6; border-color:#2aa876;">
+      <p style="font-size:20px; color:var(--muted);">STEP 1：配偶者Bの取り分</p>
+      <p style="font-size:28px; font-weight:800; margin:6px 0;">配偶者 ＋ 子 → <span class="k">½</span></p>
+      <p style="font-size:24px;">B ＝ 6,000万 × ½ ＝ <span class="k">3,000万円</span></p>
+    </div>
+    <div style="text-align:center; font-size:28px; color:var(--muted); padding-top:36px;">→</div>
+    <div class="box" style="background:#fff7fb; border-color:#e85d75;">
+      <p style="font-size:20px; color:var(--muted);">STEP 2：子3人で残り½を均等割り</p>
+      <p style="font-size:28px; font-weight:800; margin:6px 0;">3,000万 ÷ 3人 ＝ <span class="k2">1,000万円</span></p>
+      <p style="font-size:22px;">C・D・E 各 ＝ <span class="k2">1,000万円</span></p>
+    </div>
+  </div>
+  <p class="note2" style="margin-top:10px;"><span class="k2">注意：</span> 半血兄弟姉妹<span class="term-note">片方の親だけ共通な兄弟姉妹</span>の相続分は全血の <span class="k2">½</span> になる</p>
+  <div class="page-ref">らくらく宅建塾 p.72〜73</div>
+</section>
+
+<!-- ===== 代襲相続 ===== -->
+<section>
+  <h2>代襲相続：誰が「代わり」に？</h2>
+  <div class="svg-wrap w100" style="margin-top:6px;">
+    <svg viewBox="0 0 900 280" style="width:100%;height:auto; max-height:175px;">
+      <use href="#diag-daishuu"/>
+    </svg>
+  </div>
+  <div class="grid2" style="margin-top:8px;">
+    <div class="callout-g">
+      <p><span class="k">代襲あり ✓</span>（本人の意思でない場合）</p>
+      <p style="font-size:20px;">・<span class="k">死亡</span>：本人がすでに亡くなっている<br>・<span class="k">廃除</span>：被相続人<span class="term-note">亡くなった人</span>が「相続させたくない」と家裁<span class="term-note">家庭裁判所</span>に申請して認められた<br>・<span class="k">欠格</span>：犯罪行為（被相続人を殺そうとした等）で資格を失った</p>
+    </div>
+    <div class="callout">
+      <p><span class="k2">代襲なし ✗</span>（本人の意思による場合）</p>
+      <p style="font-size:20px;"><span class="k2">放棄</span>：自ら「相続しません」と選んだ場合<br>→ 自分の意思で断ったのだから<br>　 子（孫）には回らない</p>
+      <div style="background:#fce7f3; border-radius:8px; padding:6px 10px; margin-top:6px;">
+        <p style="font-size:18px; margin:0;">💡「断った人の子は関係ない」と覚える</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.73〜74</div>
+</section>
+
+<!-- ===== 相続の承認・放棄 ===== -->
+<section>
+  <h2>相続の承認・放棄</h2>
+  <p style="font-size:22px; color:var(--muted);">相続開始を知ってから <span class="k2">3ヶ月以内</span> に選択する</p>
+  <div class="svg-wrap w100" style="margin-top:8px;">
+    <svg viewBox="0 0 900 280" style="width:100%;height:auto; max-height:200px;">
+      <use href="#diag-shounin-houki"/>
+    </svg>
+  </div>
+  <div class="callout" style="margin-top:10px;">
+    <p><span class="k2">重要ポイント</span>：<br>
+    限定承認 → <span class="k2">相続人全員</span>で家裁<span class="term-note">家庭裁判所</span>へ申述<span class="term-note">裁判所に正式に意思を届け出ること</span><br>
+    放棄 → 各自<span class="k">単独</span>で家裁へ申述（単独でOK）</p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.75〜76</div>
+</section>
+
+<!-- ===== 遺産分割 ===== -->
+<section>
+  <h2>遺産分割：分割するまでは「共有」</h2>
+  <div class="box" style="margin-top:10px;">
+    <p>相続が発生すると遺産は共同相続人の<span class="k">共有</span>状態になる</p>
+  </div>
+  <table class="tbl" style="margin-top:10px;">
+    <thead>
+      <tr>
+        <th>手続き</th>
+        <th>全員の同意</th>
+        <th>ポイント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>限定承認</td>
+        <td class="lose">全員必要</td>
+        <td>家裁への申述が必要</td>
+      </tr>
+      <tr>
+        <td>遺産分割協議<span class="term-note">全相続人で分け方を話し合うこと</span></td>
+        <td class="lose">全員必要</td>
+        <td>法定相続分と異なる分割も可</td>
+      </tr>
+      <tr>
+        <td>相続分の譲渡</td>
+        <td class="win">各自OK</td>
+        <td>第三者へも譲渡できる</td>
+      </tr>
+      <tr>
+        <td>遺留分侵害額請求</td>
+        <td class="win">各自OK</td>
+        <td>意思表示のみ（訴え不要）</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:8px;">法定相続分を超えた取得を第三者に対抗するには <span class="k">登記</span> が必要</p>
+  <div class="page-ref">らくらく宅建塾 p.77〜78</div>
+</section>
+
+<!-- ===== 第2部 ヘッダー ===== -->
+<section data-background-color="#fff7fb">
+  <div style="text-align:center; padding:60px 0;">
+    <p style="font-size:22px; color:var(--muted);">第 2 部 ／ 18分</p>
+    <h2 style="font-size:50px; color:var(--accent2); margin:10px 0;">遺言・遺留分</h2>
+    <p style="font-size:24px; color:var(--ink);">本人の意思を確実に残す</p>
+  </div>
+</section>
+
+<!-- ===== 遺言の基礎 ===== -->
+<section>
+  <h2>遺言の基礎知識</h2>
+  <div class="grid2" style="margin-top:12px;">
+    <div>
+      <p style="font-weight:700; font-size:24px; color:var(--accent);">できること ✓</p>
+      <div class="callout-g">
+        <p style="font-size:22px;">・15歳以上ならできる<br>・成年後見<span class="term-note">判断能力が低下した人を守る制度</span>を受けていてもできる<br>・いつでも<span class="k">自由に撤回</span>できる<br>・後の遺言が<span class="k">優先</span>（後の勝ち！）</p>
+      </div>
+    </div>
+    <div>
+      <p style="font-weight:700; font-size:24px; color:var(--accent2);">できないこと ✗</p>
+      <div class="callout">
+        <p style="font-size:22px;"><span class="k2">代理人</span>によって遺言はできない<br>（遺言者本人が行う）<br><br>相続人・受遺者<span class="term-note">遺言で財産をもらう人</span>は<span class="k2">証人になれない</span><br>（近親者等は証人不可）</p>
+      </div>
+    </div>
+  </div>
+  <div style="background:#fffbeb; border:2px solid #f59e0b; border-radius:12px; padding:10px 16px; margin-top:10px;">
+    <p style="font-size:18px; margin:0 0 4px; font-weight:700; color:#92400e;">⚠️ ひっかけ注意：「撤回権の放棄」は無効</p>
+    <p style="font-size:18px; margin:0; color:var(--ink);">
+      <span style="color:#92400e; font-weight:700;">「撤回権を放棄する」</span>＝「この遺言は一生取り消しません」と約束すること<br>
+      → こういう約束をしても<span class="k2">効力はなく、後から自由に変えられる</span><br>
+      <span style="color:var(--muted); font-size:16px;">例：「変えない」と誓っても、翌日新しい遺言を書けば後の遺言が勝つ</span>
+    </p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.79〜80</div>
+</section>
+
+<!-- ===== 遺言の種類 比較 ===== -->
+<section>
+  <h2>遺言の種類：自筆 vs 公正証書</h2>
+  <div class="svg-wrap w100" style="margin-top:10px;">
+    <svg viewBox="0 0 900 260" style="width:100%;height:auto; max-height:195px;">
+      <use href="#diag-yuigon-hikaku"/>
+    </svg>
+  </div>
+  <div class="grid2" style="margin-top:10px;">
+    <div class="callout-g">
+      <p><span class="k">自筆証書遺言のポイント</span></p>
+      <p style="font-size:20px;">・全文・日付・氏名を<span class="k">手書き</span>（財産目録のみPC可）<br>・法務局（遺言書保管所）に保管すれば<span class="k">検認</span><span class="term-note">遺言書の存在を家裁が確認する手続き</span>不要</p>
+    </div>
+    <div class="callout">
+      <p><span class="k2">公正証書遺言のポイント</span></p>
+      <p style="font-size:20px;">・公証人が作成・公証役場<span class="term-note">公証人が書類を作成・保管する公的機関</span>で保管<br>・証人 <span class="k2">2名以上</span>（相続人・未成年等は不可）<br>・紛失・改ざんリスクが低い</p>
+    </div>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.81〜82</div>
+</section>
+
+<!-- ===== 遺言のひっかけ問題 ===== -->
+<section>
+  <h2>遺言のひっかけ対策</h2>
+  <div class="box" style="margin-top:12px;">
+    <p style="font-weight:700;">Q. AがBに土地を遺贈<span class="term-note">遺言によって財産を渡すこと</span>する遺言をした後、Aより先にBが死亡した。どうなる？</p>
+  </div>
+  <span class="btn" onclick="this.nextElementSibling.style.display='block'">▶ 答えを見る</span>
+  <div class="answer">
+    <div class="ttl">遺言は無効</div>
+    <p>受遺者<span class="term-note">遺言で財産をもらう人</span>（B）が遺言者（A）より先に死亡した場合、遺言は<span class="k2">無効</span>になる。<br>
+    その土地はA'（相続人）が相続することになる。</p>
+  </div>
+  <div class="box" style="margin-top:14px;">
+    <p style="font-weight:700;">Q. Bが遺贈を放棄した場合は？</p>
+  </div>
+  <span class="btn" onclick="this.nextElementSibling.style.display='block'">▶ 答えを見る</span>
+  <div class="answer">
+    <div class="ttl">相続人が相続する</div>
+    <p>受遺者が遺贈を放棄した場合、その財産は<span class="k">相続人</span>が相続する。<br>
+    ただし遺贈の承認・放棄を<span class="k2">撤回することはできない</span>。</p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.82〜83</div>
+</section>
+
+<!-- ===== 遺留分 ===== -->
+<section>
+  <h2>遺留分：最低限もらえる権利</h2>
+  <p style="font-size:22px; color:var(--muted);">遺言で財産を渡されなかった法定相続人が主張できる権利</p>
+  <div class="svg-wrap w100" style="margin-top:8px;">
+    <svg viewBox="0 0 900 260" style="width:100%;height:auto; max-height:195px;">
+      <use href="#diag-iryubun"/>
+    </svg>
+  </div>
+  <div class="callout" style="margin-top:8px;">
+    <p><span class="k2">超重要！</span>　<span class="k2">兄弟姉妹には遺留分がない</span></p>
+    <p style="font-size:20px;">直系尊属<span class="term-note">父母・祖父母など血族の上の世代</span>（親のみ）＝遺産の 1/3　｜　それ以外（配偶者・子を含む）＝遺産の 1/2</p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.84</div>
+</section>
+
+<!-- ===== 遺留分の計算例 ===== -->
+<section>
+  <h2>遺留分の計算：2ステップで解ける</h2>
+  <div class="callout-g" style="margin-top:8px;">
+    <p><span class="k">例）</span>遺産6,000万円。配偶者B・子C・子D（計3人）が相続人。遺言で第三者Eに全財産を遺贈した場合</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 36px 1fr; gap:10px; align-items:start; margin-top:10px;">
+    <div class="box" style="background:#f0fdf6; border-color:#2aa876;">
+      <p style="font-size:18px; color:var(--muted); margin:0 0 4px;">STEP 1：全体の遺留分を出す</p>
+      <p style="font-size:20px; margin:0;">配偶者がいる → 「それ以外」 → <span class="k">遺産の½</span></p>
+      <p style="font-size:22px; font-weight:800; margin-top:6px;">6,000万 × ½ ＝ <span class="k">3,000万円</span></p>
+      <p style="font-size:16px; color:var(--muted); margin-top:4px;">（これが全相続人の遺留分の合計）</p>
+    </div>
+    <div style="text-align:center; font-size:26px; color:var(--muted); padding-top:36px;">→</div>
+    <div class="box" style="background:#fff7fb; border-color:#e85d75;">
+      <p style="font-size:18px; color:var(--muted); margin:0 0 4px;">STEP 2：法定相続分の割合で分配</p>
+      <p style="font-size:18px; margin:0;">B(配偶者)の法定相続分 ½ → <span class="k2">3,000 × ½ ＝ 1,500万</span><br>C(子)の法定相続分 ¼ → <span class="k2">3,000 × ¼ ＝ 750万</span><br>D(子)の法定相続分 ¼ → <span class="k2">3,000 × ¼ ＝ 750万</span></p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:8px; text-align:center;">
+    <p style="font-size:20px;"><span class="k2">公式：</span> 各自の遺留分 ＝ 遺産 × <span class="k">遺留分割合（½ or ⅓）</span> × <span class="k2">自分の法定相続分</span></p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.84〜85</div>
+</section>
+
+<!-- ===== 誕生石ゴロ ===== -->
+<section>
+  <h2>遺留分侵害額請求の覚え方：「<span class="k2">誕生石</span>」</h2>
+  <p style="font-size:20px; color:var(--muted); margin-top:2px;">らくらく宅建塾直伝！読み方のルールを先に確認</p>
+  <div class="grid3" style="margin-top:12px;">
+    <div class="box" style="text-align:center;">
+      <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:6px;">
+        <span style="font-size:44px; font-weight:900; color:var(--accent2);">誕</span>
+        <span style="font-size:24px; color:var(--muted);">→</span>
+        <span style="font-size:32px; font-weight:800; color:var(--accent);">単</span>
+      </div>
+      <p style="font-size:18px; color:var(--muted); margin:0;">「たん」→「単独」</p>
+      <div class="callout-g" style="margin-top:6px; text-align:left;">
+        <p style="font-size:18px; margin:0;">全員同意不要<br><span class="k">各自単独</span>で請求できる</p>
+      </div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:6px;">
+        <span style="font-size:44px; font-weight:900; color:var(--accent2);">生</span>
+        <span style="font-size:24px; color:var(--muted);">→</span>
+        <span style="font-size:32px; font-weight:800; color:var(--accent);">譲</span>
+      </div>
+      <p style="font-size:18px; color:var(--muted); margin:0;">「じょう」→「譲渡」</p>
+      <div class="callout-g" style="margin-top:6px; text-align:left;">
+        <p style="font-size:18px; margin:0;">請求権を他人へ<br><span class="k">譲渡</span>できる</p>
+      </div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:6px;">
+        <span style="font-size:44px; font-weight:900; color:var(--accent2);">石</span>
+        <span style="font-size:24px; color:var(--muted);">→</span>
+        <span style="font-size:32px; font-weight:800; color:var(--accent);">意</span>
+      </div>
+      <p style="font-size:18px; color:var(--muted); margin:0;">「いし」→「意思表示」</p>
+      <div class="callout-g" style="margin-top:6px; text-align:left;">
+        <p style="font-size:18px; margin:0;">訴訟不要！<br><span class="k">意思表示</span>だけでOK</p>
+      </div>
+    </div>
+  </div>
+  <div style="background:#1f2937; border-radius:14px; padding:12px 20px; margin-top:12px; text-align:center;">
+    <p style="font-size:24px; color:#6ee7b7; font-weight:800; margin:0;">「誕生石」で<span style="color:#fff;">　単独　で請求→　譲渡　できる→　意思表示　だけでOK</span></p>
+  </div>
+  <div class="page-ref">らくらく宅建塾 p.85〜86</div>
+</section>
+
+<!-- ===== まとめ ===== -->
+<section>
+  <h2>本日のまとめ ✅</h2>
+  <div class="box" style="margin-top:10px;">
+    <p><span class="k">① 相続人の順位</span>：子→父母→兄弟姉妹。配偶者は常に相続人。</p>
+    <p style="font-size:20px; color:var(--muted); margin-top:2px;">法定相続分：配偶者＋子→1/2・1/2　配偶者＋父母→2/3・1/3　配偶者＋兄弟→3/4・1/4</p>
+  </div>
+  <div class="box">
+    <p><span class="k2">② 代襲相続</span>：死亡・廃除・欠格は代襲あり。<span class="k2">放棄は代襲なし！</span></p>
+    <p style="font-size:20px; color:var(--muted); margin-top:2px;">限定承認は全員申述。放棄は各自単独OK。</p>
+  </div>
+  <div class="box">
+    <p><span class="k">③ 遺言</span>：自筆（証人不要・検認必要）vs 公正証書（証人2人・検認不要）。後の遺言が勝ち！</p>
+  </div>
+  <div class="box">
+    <p><span class="k2">④ 遺留分</span>：<span class="k2">兄弟姉妹はなし</span>！直系尊属のみ→1/3、その他→1/2。<span class="k">「誕生石」</span>で行使方法！</p>
+  </div>
+</section>
+
+<!-- ===================================================
+     確認クイズ（本試験形式）
+=================================================== -->
+
+<!-- ===== 確認クイズ ① ===== -->
+<section>
+  <h2>【問 1】 代襲相続</h2>
+  <div class="exam-q" style="margin-top:10px;">
+    <p>代襲相続に関する次の記述のうち、民法の規定によれば、<span class="k2">誤っているもの</span>はどれか。</p>
+  </div>
+  <div class="exam-choice">1　被相続人Aの子Bが廃除された場合、Bに子C（Aの孫）がいれば、CはBの代わりに代襲相続することができる。</div>
+  <div class="exam-choice">2　被相続人Aの子Bが、Aより先に死亡した場合、Bに子C（Aの孫）がいれば、CはBの代わりに代襲相続することができる。</div>
+  <div class="exam-choice">3　被相続人Aの兄弟Bが、Aより先に死亡し、Bに子C（Aの甥・姪）がいれば代襲相続できるが、CにもD（Cの子）がいるとき、DはAの相続人とはなれない。</div>
+  <div class="exam-choice">4　被相続人Aの子Bが相続の放棄をした場合でも、Bに子C（Aの孫）がいれば、CはBの代わりに代襲相続することができる。</div>
+
+  <span class="btn" style="margin-top:12px;" onclick="this.nextElementSibling.style.display='block'">▶ 正解を見る</span>
+  <div class="answer">
+    <div class="ttl">正解：4</div>
+    <p><span class="k2">放棄の場合は代襲相続されない</span>のが原則。代襲相続が発生するのは「死亡・廃除・欠格」のみ。<br>
+    <span style="font-size:20px; color:var(--muted);">1:正しい（廃除→代襲あり）　2:正しい（死亡→代襲あり）　3:正しい（兄弟の代襲は甥姪の1代のみ）</span></p>
+  </div>
+</section>
+
+<!-- ===== 確認クイズ ② ===== -->
+<section>
+  <h2>【問 2】 遺言</h2>
+  <div class="exam-q" style="margin-top:10px;">
+    <p>遺言に関する次の記述のうち、民法の規定によれば、<span class="k2">誤っているもの</span>はどれか。</p>
+  </div>
+  <div class="exam-choice">1　自筆証書遺言は、遺言者が全文、日付及び氏名を自書し押印しなければならないが、財産目録のみパソコンで作成して添付することができる。</div>
+  <div class="exam-choice">2　公正証書遺言には証人2人以上の立会いが必要であるが、遺言者の推定相続人（相続する可能性がある人）は証人となることができない。</div>
+  <div class="exam-choice">3　遺言者は、いつでも遺言の全部又は一部を撤回することができ、後の遺言が前の遺言と抵触する場合は、その抵触部分は後の遺言で撤回したものとみなされる。</div>
+  <div class="exam-choice">4　自筆証書遺言は、法務局（遺言書保管所）に保管されている場合であっても、相続開始後に必ず家庭裁判所の検認を受けなければならない。</div>
+
+  <span class="btn" style="margin-top:12px;" onclick="this.nextElementSibling.style.display='block'">▶ 正解を見る</span>
+  <div class="answer">
+    <div class="ttl">正解：4</div>
+    <p>法務局（遺言書保管所）に保管された自筆証書遺言は<span class="k2">検認不要</span>。<br>
+    <span style="font-size:20px; color:var(--muted);">1:正しい（財産目録PCはOK）　2:正しい（推定相続人は証人不可）　3:正しい（後の遺言が優先）</span></p>
+  </div>
+</section>
+
+<!-- ===== 確認クイズ ③ 前提確認 ===== -->
+<section>
+  <h2>【問 3】 前提確認</h2>
+  <p style="font-size:20px; color:var(--muted); margin-top:4px;">クイズ③に入る前に確認しよう</p>
+  <div class="box" style="margin-top:12px;">
+    <p style="font-weight:700;">Q. 相続人が<strong>配偶者Bと子C（1人）のみ</strong>の場合：<br>① 遺産全体の遺留分割合は？<br>② B・C各自の法定相続分は？</p>
+  </div>
+  <span class="btn" onclick="this.nextElementSibling.style.display='block'">▶ 確認する</span>
+  <div class="answer">
+    <div class="ttl">① 遺産の 1/2（「それ以外の場合」）　② B ＝ 1/2、C ＝ 1/2</div>
+    <p>配偶者Bがいる → 「それ以外」 → 遺留分の合計は遺産の <span class="k">1/2</span><br>
+    配偶者＋子1人 → B=½、C=½（均等）<br>
+    → <span class="k2">この2つを掛け合わせると各自の遺留分が出る！</span></p>
+  </div>
+</section>
+
+<!-- ===== 確認クイズ ③ ===== -->
+<section>
+  <h2>【問 3】 遺留分</h2>
+  <div class="exam-q" style="margin-top:8px;">
+    <p>遺留分に関する次の記述のうち、民法の規定によれば、<span class="k">正しいもの</span>はどれか。</p>
+    <p style="font-size:20px; color:var(--muted); margin-top:4px;">Aが死亡し、遺産は6,000万円。相続人は配偶者Bと子C（1人）のみ。Aは遺言で全財産を第三者Dに遺贈していた。</p>
+  </div>
+  <div class="exam-choice">1　BとCにはいずれも遺留分があり、Bの遺留分は1,500万円、Cの遺留分は1,500万円である。</div>
+  <div class="exam-choice">2　BとCにはいずれも遺留分があり、Bの遺留分は1,500万円、Cの遺留分は750万円である。</div>
+  <div class="exam-choice">3　BとCにはいずれも遺留分があり、Bの遺留分は2,000万円、Cの遺留分は1,000万円である。</div>
+  <div class="exam-choice">4　BとCが遺留分侵害額請求権を行使するには、BとCが共同してしなければならない。</div>
+
+  <span class="btn" style="margin-top:10px;" onclick="this.nextElementSibling.style.display='block'">▶ 正解を見る</span>
+  <div class="answer">
+    <div class="ttl">正解：1</div>
+    <p>遺留分合計 = 6,000万 × <span class="k">1/2</span> = 3,000万。B = 3,000 × <span class="k">1/2</span> = <span class="k">1,500万</span>、C = 3,000 × <span class="k">1/2</span> = <span class="k">1,500万</span><br>
+    <span style="font-size:18px; color:var(--muted);">2:誤り（子1人なのにC=750万は子2人の計算）　3:誤り（B=2,000はC=父母との混同）　4:誤り（各自単独でOK）</span></p>
+  </div>
+</section>
+
+<!-- ===== 次回予告 ===== -->
+<section data-background-color="#1f2937">
+  <div style="color:#fff; text-align:center; padding:36px 0;">
+    <p style="font-size:20px; color:#9ca3af; margin-bottom:8px;">次回（第8回）</p>
+    <h2 style="font-size:46px; color:#fff; margin:0 0 20px;">宅建業法：宅建業者と免許</h2>
+    <div class="grid2" style="max-width:700px; margin:0 auto 28px; color:#fff;">
+      <div style="background:rgba(255,255,255,.12); border-radius:14px; padding:16px;">
+        <p style="font-size:20px; color:#9ca3af;">予習しておくと◎</p>
+        <p style="font-size:22px;">宅建業の定義・免許の種類（国土交通大臣 / 都道府県知事）</p>
+      </div>
+      <div style="background:rgba(255,255,255,.12); border-radius:14px; padding:16px;">
+        <p style="font-size:20px; color:#9ca3af;">今週のミッション</p>
+        <p style="font-size:22px;">今日の相続人順位の計算問題を1問解いてみよう！</p>
+      </div>
+    </div>
+    <p style="font-size:24px; color:#6ee7b7; font-weight:700;">お疲れさまでした！</p>
+  </div>
+</section>
+
+</div><!-- .slides -->
+</div><!-- .reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    minScale: 0.1,
+    maxScale: 2.0,
+    transition: 'fade',
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+  });
+</script>
+</body>
+</html>
